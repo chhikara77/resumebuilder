@@ -31,7 +31,7 @@ export default function Home() {
           <input type="text" />
           <label>Phone Number</label>
           <input type="text" className={Styles.phone} />
-          <button className={Styles.btnSite}>SAVE & CONTINUE</button>
+          <Link to="/experience"><button className={Styles.btnSite}>SAVE & CONTINUE</button></Link>
         </form>
         <div className={Styles.back}>
           <Link to="/">Back</Link>

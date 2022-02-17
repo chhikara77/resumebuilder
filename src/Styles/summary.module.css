@@ -29,6 +29,7 @@ form {
     width: 50%;
 }
 .emailcheck{
+    margin-left: 10px;
     width: 50%;
     display: flex;
     align-items: center;
@@ -40,13 +41,13 @@ input[type=email]{
 input[type=checkbox]{
     width: 20px;
     zoom:1.2;
-    padding: 0;
     margin: 0;
-    border-radius: 0px;
+    align-self: flex-start;
     
 }
 .emailcheck>label{
     padding-bottom: 10px;
+    margin-left: 10px;
 }
 label {
     margin-bottom: 5px;
@@ -65,7 +66,7 @@ input {
 }
 .btnSite {
     height: 43px;
-    width: 85%;
+    width: 100%;
     color: white;
     font-weight: 700;
     margin: auto;
