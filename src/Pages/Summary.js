@@ -1,42 +1,34 @@
-import React from "react";
+import React from 'react';
 import Styles from "../Styles/summary.module.css";
-import { Link } from "react-router-dom"; 
-export default function Home() {
+import {Link} from "react-router-dom";
+
+function Summary() {
   return (
     <div className={Styles.container}>
-      <div className={Styles.formsection}>
-        <div className={Styles.headersection}>
-          <h1>Tell us about yourself</h1>
-          <p>With this info, recruiters will be able to find you</p>
-        </div>
-        <form action="">
-          <label>Name</label>
-          <input type="text" />
-          <label>Email</label>
-          <div className={Styles.emailcontainer}>
-            <div className={Styles.emailbox}>
-              <input type="email" />
-            </div>
-            <div className={Styles.emailcheck}>
-              <input type="checkbox" />
-              <label htmlFor="">Don't Show on my resume</label>
-            </div>
-          </div>
-
-          <label>Street Address</label>
-          <input type="text" />
-          <label>City</label>
-          <input type="text" className={Styles.city} />
-          <label>Country</label>
-          <input type="text" />
-          <label>Phone Number</label>
-          <input type="text" className={Styles.phone} />
-          <Link to="/experience"><button className={Styles.btnSite}>SAVE & CONTINUE</button></Link>
-        </form>
-        <div className={Styles.back}>
-          <Link to="/">Back</Link>
-        </div>
+    <div className={Styles.formsection}>
+      <div className={Styles.headersection}>
+        <h1>Summary</h1>
+        <p>Briefly describe the value that you bring through your skills, background and experience.</p>
+      </div>
+      <form action="" className={Styles.form}>
+          <textarea placeholder='Sell yourself for the job. Include 3-5 sentences. Customize your summary to the job you’re applying to.' name="summary" id="" cols="30" rows="20"></textarea>
+          <div className={Styles.editorbtn}>
+          <i class="fa-solid fa-bold"></i>
+          <i class="fa-solid fa-italic"></i>
+          <i class="fa-solid fa-underline"></i>
+          <i class="fa-solid fa-rotate-left"></i>
+          <i class="fa-solid fa-rotate-right"></i>
+          <i class="fa-solid fa-spell-check"></i>
+          <i class="fa-solid fa-list-check"></i>
+               </div>
+        <Link to="/finalize"><button className={Styles.btnSite}>SAVE & CONTINUE</button></Link>
+      </form>
+      <div className={Styles.back}>
+        <Link to="/skillsform">Back</Link>
       </div>
     </div>
-  );
+  </div>
+  )
 }
+
+export default Summary

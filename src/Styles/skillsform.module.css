@@ -20,26 +20,33 @@ a {
 .headersection {
     text-align: center;
 }
-.form textarea {
-    border-radius: 5px 5px 0 0;
+
+.formsection input {
+    height: 38px;
+    width: 100%;
+    margin-bottom: 18px;
+    border-radius: 5px;
     border: 1px solid silver;
 }
-.editorbtn{
-    height: 30px;
-    background-color: #ececec;
-    border: 1px solid silver;
-    border-top: 0;
-    border-radius: 0 0 5px 5px;
-    margin-bottom: 30px;
-    display: flex;
-    align-items: center;
+.skills {
+    position: relative;
 }
-.editorbtn i{
-    margin-left: 15px;
+.skills i {
+    position: absolute;
 }
-.editorbtn i:hover{
+.updown i {
+    top: 12px;
+    left: -14px;  
     color: #03acbb;
+}
+
+.input i {
+    top: 12px;
+    right: 4px;
+}
+.skills i:hover {
     cursor: pointer;
+    color: #03acbb;
 }
 .form .btnSite {
     height: 43px;

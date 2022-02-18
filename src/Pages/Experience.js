@@ -15,11 +15,11 @@ function Experience() {
             <li className={Styles.secondstep}><span>Need help to fill out your work experience? Simply click to add pre-written examples unique to your industry.</span></li>
             <li className={Styles.thirdstep}><span>Be sure to include keywords from the job posting. This will make your resume more attractive to recruiters.</span></li>
           </ul>
-          <div>
+          <div className={Styles.tips}>
             <input type="checkbox" />
             <label >Don't show me tips pages in the future.</label>
           </div>
-          <Link to="/howto"><button className={Styles.btnSite}>ENTER MY WORK EXPERIENCE</button></Link>
+          <Link to="/experienceform"><button className={Styles.btnSite}>ENTER MY WORK EXPERIENCE</button></Link>
           </div>
         </div>
         <div className={Styles.right}>

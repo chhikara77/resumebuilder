@@ -39,6 +39,9 @@
    padding: 0 30px;
    
 }
+.parentbox a{
+    width: 100%;
+}
 .right >p {
     font-size: 13px;
     padding-bottom: 20px;
@@ -59,6 +62,10 @@
     border-radius: 5px;
     border: none;
     background-color: #8cc53e;
+}
+.right img {
+    width: 64px;
+    height: 68px;
 }
 .right .btnSite {
     height: 40px;

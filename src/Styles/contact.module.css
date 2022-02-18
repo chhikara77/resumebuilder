@@ -1,0 +1,89 @@
+.container {
+    height: 100%;
+}
+.formsection {
+    margin-top: 50px;
+    margin-bottom: 60px;
+    width: 500px;
+    display: flex;
+    height: 650px;
+    flex-direction: column;
+    padding: 40px;
+    box-shadow: 0px 0px 10px 0px rgba(85, 85, 85, 0.75);
+    border-radius: 5px;
+    align-items: center;
+}
+.formsection h1 {
+    margin-top: 0;
+}
+.formsection form {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+}
+.emailcontainer{
+    display: flex;
+    width: 100%;
+}
+.emailbox{
+    width: 50%;
+}
+.emailcheck{
+    margin-left: 10px;
+    width: 50%;
+    display: flex;
+    align-items: center;
+
+}
+form input[type=email]{
+    width: 100%;
+}
+.formsection input[type=checkbox]{
+    width: 20px;
+    zoom:1.1;
+    margin: 0;
+    align-self: flex-start;
+    
+}
+.emailcheck>label{
+    padding-bottom: 10px;
+    margin-left: 10px;
+}
+.formsection label {
+    margin-bottom: 5px;
+}
+.formsection input {
+    height: 38px;
+    margin-bottom: 18px;
+    border-radius: 5px;
+    border: 1px solid silver;
+}
+.city {
+    width: 45%;
+}
+.phone {
+    width: 45%;
+}
+.btnSite {
+    height: 43px;
+    width: 100%;
+    color: white;
+    font-weight: 700;
+    margin: auto;
+    border-radius: 5px;
+    border: none;
+    background-color: #8cc53e;
+}
+.btnSite:hover {
+    background-color: #94dd46;
+}
+.back {
+    margin-top: 10px;
+}
+.back a{
+    color: #03acbb;
+    text-decoration: none;
+}
+.back a:hover {
+    text-decoration: underline;
+}

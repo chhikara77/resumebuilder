@@ -20,27 +20,36 @@ a {
 .headersection {
     text-align: center;
 }
-.form textarea {
-    border-radius: 5px 5px 0 0;
-    border: 1px solid silver;
-}
-.editorbtn{
-    height: 30px;
-    background-color: #ececec;
-    border: 1px solid silver;
-    border-top: 0;
-    border-radius: 0 0 5px 5px;
-    margin-bottom: 30px;
+.address {
     display: flex;
-    align-items: center;
+    width: 100%;
+    justify-content: space-between;
 }
-.editorbtn i{
-    margin-left: 15px;
+.address>div{
+    display: flex;
+    flex-direction: column;
+    width: 49%;
 }
-.editorbtn i:hover{
-    color: #03acbb;
-    cursor: pointer;
+.graddate {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
 }
+.graddate>div{
+    display: flex;
+    flex-direction: column;
+    width: 49%;
+}
+.formsection input {
+    height: 38px;
+    margin-bottom: 18px;
+    border-radius: 5px;
+    border: 1px solid silver;
+}
+.formsection label {
+    margin-bottom: 5px;
+}
+
 .form .btnSite {
     height: 43px;
     width: 100%;

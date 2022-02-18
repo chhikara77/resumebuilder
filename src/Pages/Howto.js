@@ -12,13 +12,13 @@ function Howto() {
                 <img src="https://cdn2.resumenerd.com/images/icon-create-resume.svg" alt="" />
                 <h2>Create New Resume</h2>
                 <p>We will help you create a resume step-by-step.</p>
-                <Link to="/summary"><button className={Styles.btnSite}>START FRESH</button></Link>
+                <Link to="/contact"><button className={Styles.btnSite}>START FRESH</button></Link>
             </div>
             <div className={Styles.right}>
             <img src="https://cdn2.resumenerd.com/images/icon-upload-resume.svg" alt="" />
                 <h2>I already have resume</h2>
                 <p>We'll re-format it and fill in your information so you don't have to do it.</p>
-                <Link to="/"><button className={Styles.btnSite}>UPLOAD RESUME</button></Link>
+                <Link to="/contact"><button className={Styles.btnSite}>UPLOAD RESUME</button></Link>
             </div>
             </div>
             <Link className={Styles.linkcolor} to="/">Back</Link>

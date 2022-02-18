@@ -1,0 +1,93 @@
+a {
+    text-decoration: none;
+}
+.formsection {
+    margin-top: 50px;
+    margin-bottom: 60px;
+    width: 520px;
+    display: flex;
+    height: 630px;
+    flex-direction: column;
+    padding: 10px 40px 40px 40px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    align-items: center;
+}
+.formsection form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.address {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.address>div{
+    display: flex;
+    flex-direction: column;
+    width: 49%;
+}
+.startdate {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.startdate>div{
+    display: flex;
+    flex-direction: column;
+    width: 49%;
+}
+.enddate {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.enddate>div{
+    display: flex;
+    flex-direction: column;
+    width: 49%;
+}
+.formsection input {
+    height: 38px;
+    margin-bottom: 18px;
+    border-radius: 5px;
+    border: 1px solid silver;
+}
+.formsection label {
+    margin-bottom: 5px;
+}
+.workcheckbox {
+    display: flex;
+    margin-bottom: 15px;
+}
+.workcheckbox input {
+    margin: 0;
+    width: 15px;
+    height: 15px;
+    zoom: 1.2;
+}
+.workcheckbox label {
+    margin-left: 10px;
+}
+.form .btnSite {
+    height: 43px;
+    width: 100%;
+    color: white;
+    font-weight: 700;
+    margin: auto;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #8cc53e;
+}
+.btnSite:hover {
+    background-color: #94dd46;
+}
+.back a{
+    color: #03acbb;
+    text-decoration: none;
+}
+.back a:hover {
+    text-decoration: underline;
+}
