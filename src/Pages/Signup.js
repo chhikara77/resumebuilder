@@ -1,5 +1,4 @@
 import React from 'react'
-import styles from '../Styles/signup.module.css'
 
 export default function Signup() {
     return (

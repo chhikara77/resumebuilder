@@ -1,6 +1,9 @@
 .logo{
     margin-right: auto;
 }
+.logo img {
+    height: 52px;
+}
 .contents{
     display: flex;
     justify-content: space-around;
@@ -8,13 +11,12 @@
 }
 .loginbtn{
     font-weight: bold;
-    color: blue;
-    padding:5px;
+
 }
 .signupbtn{
     border-radius: 10%;
-    border: 2px solid blue;
-    padding:5px;
-    color: blue;
     font-weight: bold;
+}
+.contents a {
+    color: white;;
 }

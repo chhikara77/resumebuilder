@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Styles from "../Styles/skillsform.module.css";
 import {Link} from "react-router-dom";
+import Resume1 from './Resume1';
+import { useDispatch } from 'react-redux';
+
+
 
 function Skillsform() {
+  const send =useDispatch();
+  const obj={};
+  const [skill, setSkill] = useState(obj);
+  function handlechange(e) {
+    const{name,value} = e.target;
+    setSkill({
+      ...skill,
+      [name]:value
+    });
+    send({type:"SKILLS",payload:skill});
+
+  }
   return (
     
     <div className={Styles.container}>
@@ -18,7 +34,7 @@ function Skillsform() {
           <i class="fa-solid fa-arrows-up-down"></i>
           </div>
             <div className={Styles.input}>
-                <input type="text" placeholder='Skills #1'/>
+                <input type="text" name="skill1" onChange={handlechange} placeholder='Skills #1'/>
                 <i class="fa-solid fa-trash"></i>
             </div>
         </div>
@@ -27,7 +43,7 @@ function Skillsform() {
           <i class="fa-solid fa-arrows-up-down"></i>
           </div>
             <div className={Styles.input}>
-                <input type="text" placeholder='Skills #1'/>
+                <input type="text" name="skill2" onChange={handlechange} placeholder='Skills #2'/>
                 <i class="fa-solid fa-trash"></i>
             </div>
         </div>
@@ -36,7 +52,7 @@ function Skillsform() {
           <i class="fa-solid fa-arrows-up-down"></i>
           </div>
             <div className={Styles.input}>
-                <input type="text" placeholder='Skills #1'/>
+                <input type="text" name="skill3" onChange={handlechange} placeholder='Skills #3'/>
                 <i class="fa-solid fa-trash"></i>
             </div>
         </div>
@@ -45,7 +61,7 @@ function Skillsform() {
           <i class="fa-solid fa-arrows-up-down"></i>
           </div>
             <div className={Styles.input}>
-                <input type="text" placeholder='Skills #1'/>
+                <input type="text" name="skill4" onChange={handlechange} placeholder='Skills #4'/>
                 <i class="fa-solid fa-trash"></i>
             </div>
         </div>
@@ -54,7 +70,7 @@ function Skillsform() {
           <i class="fa-solid fa-arrows-up-down"></i>
           </div>
             <div className={Styles.input}>
-                <input type="text" placeholder='Skills #1'/>
+                <input type="text" name="skill5" onChange={handlechange} placeholder='Skills #5'/>
                 <i class="fa-solid fa-trash"></i>
             </div>
         </div>
@@ -63,7 +79,7 @@ function Skillsform() {
           <i class="fa-solid fa-arrows-up-down"></i>
           </div>
             <div className={Styles.input}>
-                <input type="text" placeholder='Skills #1'/>
+                <input type="text" name="skill6" onChange={handlechange} placeholder='Skills #6'/>
                 <i class="fa-solid fa-trash"></i>
             </div>
         </div>
@@ -72,7 +88,7 @@ function Skillsform() {
           <i class="fa-solid fa-arrows-up-down"></i>
           </div>
             <div className={Styles.input}>
-                <input type="text" placeholder='Skills #1'/>
+                <input type="text" name="skill7" onChange={handlechange} placeholder='Skills #7'/>
                 <i class="fa-solid fa-trash"></i>
             </div>
         </div>
@@ -86,6 +102,9 @@ function Skillsform() {
         <Link to="/educationform">Back</Link>
       </div>
     </div>
+    <div className={Styles.liveresume}>
+      <Resume1/>
+      </div>
   </div>
   )
 }

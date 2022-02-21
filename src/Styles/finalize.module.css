@@ -1,5 +1,155 @@
 .containerbox {
+    display: flex;
     width: 100%;
     height: 100%;
     background-image: url(https://cdn2.resumenerd.com/images/dotted-bg.png);
+}
+.left{
+    width: 75%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.right{
+    width:25%;
+    height: 100%;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+.right button {
+    border: none;
+    padding: 5px 3px;
+}
+.firstbox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.firstbox h1,p {
+    margin: 12px 0 0;
+}
+.firstbox, .secondbox{
+border-bottom: 1px solid #e4dbdb;
+height: 33%;
+width: 100%;
+
+}
+.firstbox .formatoption {
+    width: 100%;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+.buttonbox {
+  margin-top:3px;
+  display: flex;
+  justify-content: space-around;
+}
+.buttonbox button {
+    padding: 5px 20px;
+    border-radius: 25px;
+    color: white;
+    box-shadow: 0px 5px 38px 0px #b4b4b4;
+    background: linear-gradient(rgb(156, 207, 83) 5%, rgb(135, 202, 40) 100%);;
+}
+.fontstyle {
+    display: flex;
+    justify-content: space-between;
+}
+.fontstyle>div {
+    width: 100%;
+}
+.fontstyle select {
+    background-color: rgb(255, 255, 255);
+    width: 90%;
+    border: 1px solid silver;
+    height: 30px;
+    border-radius: 5px;
+}
+.resumebox{
+    margin: 20px 0;
+    width: 70%;
+    height: 900px;
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+    display: flex;
+}
+.colorbox {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+
+.colorbox div {
+    /* box-shadow: 3px 25px 0 5px #C95439; */
+    width: 36px;
+    height: 36px;
+    color: white;
+    background-color: aliceblue;
+    border-radius: 50%;
+}
+.colorbox .color1 {
+    background-color: rgb(167, 193, 216);
+    box-shadow: 0 10px 30px rgb(167, 193, 216 );
+}
+.colorbox .color2 {
+    background-color: rgb(68, 223, 119);
+    box-shadow: 0 10px 30px rgb(167, 193, 216 );
+}
+.colorbox .color3 {
+    background-color: rgb(34, 82, 124);
+    box-shadow: 0 10px 30px rgb(167, 193, 216 );
+}
+.colorbox .color4 {
+    background-color: rgb(177, 235, 213);
+    box-shadow: 0 10px 30px rgb(167, 193, 216 );
+}
+.colorbox .color5 {
+    background-color: rgb(190, 22, 58);
+    box-shadow: 0 10px 30px rgb(167, 193, 216 );
+}
+.colorbox .color6 {
+    background-color: rgb(148, 133, 211);
+    box-shadow: 0 10px 30px rgb(167, 193, 216 );
+}
+.colorbox .color7 {
+    background-color: rgb(233, 230, 76);
+    box-shadow: 0 10px 30px rgb(167, 193, 216 );
+}
+.colorbox .color8 {
+    background-color: rgb(233, 139, 76);
+    box-shadow: 0 10px 30px rgb(167, 193, 216 );
+}
+.colorbox .color9 {
+    background-color: rgb(132, 189, 238);
+    box-shadow: 0 10px 30px rgb(180, 179, 179);
+}
+.secondbox {
+    padding: 25px;
+    box-sizing: border-box;
+}
+.outputbutton  div{
+    height: 43px;
+    font-weight: 700;
+    border-radius: 5px;
+    background-color: rgb(140, 197, 62);
+    color: white;
+    height: 36px;
+    width: 90%;
+    margin: 30px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.outputbutton div:hover {
+    background-color: #94dd46;
+}
+.thirdbox {
+    padding: 25px;
+    box-sizing: border-box;
 }

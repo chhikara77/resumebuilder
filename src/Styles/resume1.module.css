@@ -1,0 +1,70 @@
+.resumecontainer {
+    display: flex;
+    font-family: sans-serif;
+    width: 100%;
+}
+
+.right {
+    background-color: aliceblue;
+    width: 67%;
+}
+.left .personaldetail {
+    margin-top: 150px;
+    margin-left: 10px;
+}
+.left h3{
+    text-transform: uppercase;
+    
+}
+.left p {
+    text-transform: capitalize;
+    font-size: 14px;
+}
+.domaindetail{
+    width: 95%;
+}
+
+.titlebar h5 {
+    padding: 2px 0;
+    text-transform: uppercase;
+    margin: 20px 0 0 0;
+    font-size: 14px;
+}
+.properties {
+    font-size: 14px;
+    margin-left: 12px;
+}
+.skills .properties {
+    margin-left: 10px;
+}
+.skills ul {
+    padding-left: 0;
+    list-style-type:disc;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    margin: 10px 0 0;
+}
+.skills ul li {
+    padding: 2px 5px;
+    list-style: inside;
+}
+.left {
+   
+    color: whitesmoke;
+    width: 33%;
+}
+.titleBar {
+    color: white;
+    padding-left: 10px;
+}
+
+.resumeBgColor{
+   
+        background-color: #2f527b;
+      
+}
+.resumeBgColorGreen{
+   
+    background-color: rgb(68, 223, 119);
+  
+}

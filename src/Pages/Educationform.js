@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Styles from "../Styles/educationform.module.css"
+import Resume1 from './Resume1';
 
 function Educationform() {
   return (
@@ -45,6 +46,9 @@ function Educationform() {
         <Link to="/experienceform">Back</Link>
       </div>
     </div>
+    <div className={Styles.liveresume}>
+      <Resume1 />
+      </div>
   </div>
   )
 }

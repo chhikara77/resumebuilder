@@ -9,10 +9,14 @@ html,body,#root{
     grid-template-rows: 50px auto 50px;
 }
 .header{
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
     /* background: blue; */
     display: flex;
     align-items: center;
-    box-shadow: 0px 15px 10px -15px #111;
+    background-color: #04c6d8;
+    background-color: #03acbb;
     padding-left: 50px;
     padding-right: 50px;
 }
@@ -24,7 +28,7 @@ html,body,#root{
     height: 100%;
 }
 .footer{
-    background: black;
+    background-color: #03acbb;
     color: white;
     display: flex;
     align-items: center;
