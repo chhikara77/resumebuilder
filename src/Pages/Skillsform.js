@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Styles from "../Styles/skillsform.module.css";
 import {Link} from "react-router-dom";
 import Resume1 from './Resume1';
@@ -8,17 +8,24 @@ import { useDispatch } from 'react-redux';
 
 function Skillsform() {
   const send =useDispatch();
-  const obj={};
-  const [skill, setSkill] = useState(obj);
+  const [skill, setSkill] = useState([]);
+
   function handlechange(e) {
     const{name,value} = e.target;
-    setSkill({
+    setSkill([
       ...skill,
-      [name]:value
-    });
-    send({type:"SKILLS",payload:skill});
-
+      value
+    ]);
   }
+
+  useEffect(() => {
+    send({type:"SKILLS",payload:skill});
+  },[skill])
+  // let skillarr=[1];
+  // function createskill() {
+  //       skill
+  // }
+  
   return (
     
     <div className={Styles.container}>
@@ -94,7 +101,7 @@ function Skillsform() {
         </div>
 
         <div className={Styles.desc}>
-           <a href="#">+ Add another skill</a> 
+           <a  href="#">+ Add another skill</a> 
         </div>
         <Link to="/summary"><button className={Styles.btnSite}>SAVE & CONTINUE</button></Link>
       </form>
@@ -103,7 +110,7 @@ function Skillsform() {
       </div>
     </div>
     <div className={Styles.liveresume}>
-      <Resume1/>
+      <Resume1 fontSize="10px"/>
       </div>
   </div>
   )

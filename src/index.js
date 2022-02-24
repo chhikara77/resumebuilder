@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import Combinereducer from "../src/reducers/Combinereducer"
 import Contactpagereducer from './reducers/Contactpagereducer';
 // Import the functions you need from the SDKs you need
 // import { initializeApp } from "firebase/app";
@@ -18,7 +17,7 @@ import Contactpagereducer from './reducers/Contactpagereducer';
 //   measurementId: "G-86P42SYPEW"
 // };
 const store = createStore(
-  Combinereducer,
+  Contactpagereducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   );
 ReactDOM.render(

@@ -1,33 +1,34 @@
 import React, { useEffect } from 'react';
-import Styles from "../Styles/summary.module.css";
+import Styles from "../Styles/expsummary.module.css";
 import {Link} from "react-router-dom";
 import Resume1 from './Resume1';
 import {useDispatch} from "react-redux";
 import {useState} from "react";
+import { useSelector } from 'react-redux';
 
 function Summary() {
-
+  const {jobtitle,company}=useSelector((state) => state.exp)
   const send =useDispatch();
-  const[summary, setSummary] = useState({});
+  const[expsummary, setExpsummary] = useState({});
   function handlechange(e) {
           let {name,value} =e.target;
-          setSummary({
-            ...summary,
+          setExpsummary({
+            ...expsummary,
             [name]:value
           });
         }
      useEffect(() => {
-         send({type:"SUMMARY",payload:summary});
-  },[summary])
+         send({type:"EXPSUMMARY",payload:expsummary});
+  },[expsummary])
   return (
     <div className={Styles.container}>
     <div className={Styles.formsection}>
       <div className={Styles.headersection}>
-        <h1>Summary</h1>
-        <p>Briefly describe the value that you bring through your skills, background and experience.</p>
+        <h1>Work Experience</h1>
+        <p>{jobtitle} {company}</p>
       </div>
       <form action="" className={Styles.form}>
-          <textarea name="summary" onChange={handlechange} placeholder='Sell yourself for the job. Include 3-5 sentences. Customize your summary to the job you’re applying to.' id="" cols="30" rows="20"></textarea>
+          <textarea name="expsummary" onChange={handlechange} placeholder='Sell yourself for the job. Include 3-5 sentences. Customize your summary to the job you’re applying to.' id="" cols="30" rows="20"></textarea>
           <div className={Styles.editorbtn}>
           <i class="fa-solid fa-bold"></i>
           <i class="fa-solid fa-italic"></i>
@@ -37,10 +38,10 @@ function Summary() {
           <i class="fa-solid fa-spell-check"></i>
           <i class="fa-solid fa-list-check"></i>
                </div>
-        <Link to="/finalize"><button className={Styles.btnSite}>SAVE & CONTINUE</button></Link>
+        <Link to="/educationform"><button className={Styles.btnSite}>SAVE & CONTINUE</button></Link>
       </form>
       <div className={Styles.back}>
-        <Link to="/skillsform">Back</Link>
+        <Link to="/experienceform">Back</Link>
       </div>
     </div>
     <div className={Styles.liveresume}>

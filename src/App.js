@@ -12,12 +12,14 @@ import Skillsform from "./Pages/Skillsform";
 import Contact from "./Pages/Contact";
 import Summary from "./Pages/Summary";
 import Finalize from "./Pages/Finalize";
+import Expsummary from "./Pages/Expsummary";
 
 function App() {
   return (
     <Router>
       <Layout>
         <Routes>
+        <Route path="/expsummary" element={<Expsummary />} />
         <Route path="/finalize" element={<Finalize />} />
         <Route path="/summary" element={<Summary />} />
         <Route path="/skillsform" element={<Skillsform />} />

@@ -1,37 +1,56 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Styles from "../Styles/finalize.module.css";
-import { useSelector } from "react-redux";
-import Resume1 from "./Resume1";
+import Resume from "./Resume";
 import { useDispatch } from "react-redux";
+import html2canvas from 'html2canvas';
+import { jsPDF } from 'jspdf';
+import { useSelector } from "react-redux";
 
 function Finalize() {
-  const obj = useSelector((state) => state.Contactpagereducer);
-
-  const [document, setDocument] = useState(obj.document);
-
+  const prevVal = useSelector(state=>state.document);
+  const [document, setDocument] = useState(prevVal);
   const send = useDispatch();
-  //console.log("from final",con,sum);
-  useEffect(() => {}, [document]);
   function handlechange1(e) {
     let { name, value } = e.target;
-    console.log("from finalpage", name, value);
     setDocument({
       ...document,
       [name]: value,
     });
-
-    var test = {
-      [name]: value,
-    };
-    console.log("document" + document.color);
+  }
+  useEffect(() => {
     send({ type: "DOCUMENT", payload: document });
+  },[document])
+
+  // code for downloading pdf
+  const printRef = React.useRef();
+  const handleDownloadPdf = async () => {
+    const element = printRef.current.children[0];
+    const canvas = await html2canvas(element, {
+      windowWidth: element.scrollWidth,
+      windowHeight: element.scrollHeight
+  });
+    const data = canvas.toDataURL('image/png');
+    const pdf = new jsPDF();
+
+    const imgProperties = pdf.getImageProperties(data);
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight =
+      (imgProperties.height * pdfWidth) / imgProperties.width;
+    pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
+    pdf.save('print.pdf');
+  };
+  //code for printing 
+  function print(){
+    window.print();
   }
 
   return (
     <div className={Styles.containerbox}>
       <div className={Styles.left}>
-        <div className={Styles.resumebox}>
-          <Resume1 fontSize="20px" />
+        <div  ref={printRef} className={Styles.resumebox}>
+        
+           <Resume fontSize="16px" />
+          
         </div>
       </div>
       <div className={Styles.right}>
@@ -51,19 +70,19 @@ function Finalize() {
             <div className={Styles.fontstyle}>
               <div>
                 <p>Font Style</p>
-                <select name="" id="">
-                  <option value="">Raleway</option>
-                  <option value="">Sansserif</option>
-                  <option value="">Verdana</option>
-                  <option value="">Times New Roman</option>
+                <select onChange={handlechange1} name="fontFamily" >
+                  <option onChange={handlechange1} >Raleway</option>
+                  <option onChange={handlechange1} >Sans-serif</option>
+                  <option onChange={handlechange1} >Verdana</option>
+                  <option onChange={handlechange1} >Times New Roman</option>
                 </select>
               </div>
               <div>
                 <p>Font Size</p>
-                <select name="" id="">
-                  <option value="">Small</option>
-                  <option value="">Medium</option>
-                  <option value="">Large</option>
+                <select onChange={handlechange1} name="fontSize" >
+                  <option onChange={handlechange1} >Small</option>
+                  <option onChange={handlechange1} >Medium</option>
+                  <option onChange={handlechange1} >Large</option>
                 </select>
               </div>
             </div>
@@ -71,54 +90,73 @@ function Finalize() {
               <div>
                 <p>Colors</p>
                 <div className={Styles.colorbox}>
-                  <div className={Styles.color1}>
+          
                     <input
+                    className={Styles.color1}
                       type="button"
                       name="color"
                       value="1"
                       onClick={handlechange1}
                     />
-                  </div>
-                  <div className={Styles.color2}>
+            
+              
                     <input
+                    className={Styles.color2}
                       type="button"
                       name="color"
                       value="2"
                       onClick={handlechange1}
                     />
-                  </div>
-                  <div className={Styles.color3}>
+                  
                     <input
+                    className={Styles.color3}
                       type="button"
                       name="color"
                       value="3"
                       onClick={handlechange1}
                     />
-                  </div>
-                  <div className={Styles.color4}>
+                  
+                  
                     <input
+                    className={Styles.color4}
                       type="button"
                       name="color"
                       value="4"
                       onClick={handlechange1}
                     />
-                  </div>
-                  <div className={Styles.color5}>
+                  
+                  
                     <input
+                    className={Styles.color5}
                       type="button"
                       name="color"
-                      value="1"
+                      value="5"
                       onClick={handlechange1}
                     />
-                  </div>
-                  <div className={Styles.color6}>
+                  
+            
                     <input
+                    className={Styles.color6}
                       type="button"
                       name="color"
-                      value="1"
+                      value="6"
                       onClick={handlechange1}
                     />
-                  </div>
+                      <input
+                    className={Styles.color7}
+                      type="button"
+                      name="color"
+                      value="7"
+                      onClick={handlechange1}
+                    />
+                      <input
+                    className={Styles.color8}
+                      type="button"
+                      name="color"
+                      value="8"
+                      onClick={handlechange1}
+                    />
+            
                 </div>
               </div>
             </div>
@@ -127,8 +165,8 @@ function Finalize() {
         <div className={Styles.secondbox}>
           <p>Export Options</p>
           <div className={Styles.outputbutton}>
-            <div>Download</div>
-            <div>Print</div>
+            <div onClick={handleDownloadPdf}>Download</div>
+            <div onClick={print}>Print</div>
             <div>Email</div>
           </div>
         </div>
