@@ -6,18 +6,21 @@ function Resume1({ fontSize }) {
   const fontSizeValue = fontSize ? fontSize : "16px";
 
   const store = useSelector((state) => state);
-  console.log(store);
+  console.log("from resume1",fontSizeValue);
   const { contact, edu, exp, expsummary, summary, skills, document } = store;
   const resumeColor = "resumeBgColor" + document.color;
 
   function experienceString(exp) {
     let result = exp.company;
-    if (exp.startmonth) result += " ," + exp.startmonth;
+    if (exp.startmonth) result += ", ";
     if (exp.startmonth) {
-      result += " , " + exp.startmonth + " - " + exp.startyear;
+      result +=exp.startmonth + "-" + exp.startyear;
     }
     if (exp.endmonth) {
-      result += " , " + exp.endmonth + "-" + exp.endyear;
+      result += ", " + exp.endmonth + "-" + exp.endyear;
+    }
+    if(exp.city){
+      result += ", "+exp.city + ", " + exp.country;
     }
     return result;
   }
@@ -68,7 +71,7 @@ function Resume1({ fontSize }) {
             </div>
             <div className={Styles.properties}>
               <p>
-                <strong>{exp.jobtitle} : </strong>
+                <strong>{exp.jobtitle?exp.jobtitle+", ":""}  </strong>
                 {experienceString(exp)}
               </p>
               <p>{expsummary.expsummary}</p>

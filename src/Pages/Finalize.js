@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
 import { useSelector } from "react-redux";
+import Resume1 from "./Resume1";
 
 function Finalize() {
   const prevVal = useSelector(state=>state.document);
@@ -25,19 +26,26 @@ function Finalize() {
   const printRef = React.useRef();
   const handleDownloadPdf = async () => {
     const element = printRef.current.children[0];
-    const canvas = await html2canvas(element, {
-      windowWidth: element.scrollWidth,
-      windowHeight: element.scrollHeight
-  });
-    const data = canvas.toDataURL('image/png');
-    const pdf = new jsPDF();
+  //   const canvas = await html2canvas(element, {
+  //     windowWidth: element.scrollWidth,
+  //     windowHeight: element.scrollHeight
+  // });
+  //   const data = canvas.toDataURL('image/png');
+    const pdf = new jsPDF("p","pt","a4");
+    pdf.html(element, {
+      callback: function(pdf){
+        var pagecount = pdf.internal.getNumberOfPages();
+        pdf.deletePage(pagecount);
+        pdf.save("/files/myPdf.pdf")
+      }
+    })
 
-    const imgProperties = pdf.getImageProperties(data);
-    const pdfWidth = pdf.internal.pageSize.getWidth();
-    const pdfHeight =
-      (imgProperties.height * pdfWidth) / imgProperties.width;
-    pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
-    pdf.save('print.pdf');
+    // const imgProperties = pdf.getImageProperties(data);
+    // const pdfWidth = pdf.internal.pageSize.getWidth();
+    // const pdfHeight =
+    //   (imgProperties.height * pdfWidth) / imgProperties.width;
+    // pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
+    // pdf.save('print.pdf');
   };
   //code for printing 
   function print(){
@@ -49,7 +57,7 @@ function Finalize() {
       <div className={Styles.left}>
         <div  ref={printRef} className={Styles.resumebox}>
         
-           <Resume fontSize="16px" />
+           <Resume fontSize={document.fontSize} />
           
         </div>
       </div>
