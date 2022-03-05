@@ -3,25 +3,50 @@ import Styles from "../Styles/skillsform.module.css";
 import { Link } from "react-router-dom";
 import Resume1 from "./Resume1";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import {updateDoc,doc} from "firebase/firestore";
+import { db } from "..";
 
 function Skillsform() {
-  const send = useDispatch();
-  const [skill, setSkill] = useState([]);
-  const [skillarray, setSkillarray] = useState([0,1]);
 
-  function handlechange(e) {
-    const { value } = e.target;
-    console.log(value);
-    setSkill([...skill, value]);
+  const prevstate =useSelector((state) => state.skills);
+  const uid = useSelector((state)=>state.userdetails.uid);
+  
+  async function sendskills() {
+    if(uid){
+      try {
+        const docRef=doc(db,"user",uid);
+        await updateDoc(docRef, {
+          skills:prevstate
+        });
+        console.log("data saved");
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
+    }
+  }
+
+
+  const send = useDispatch();
+  const skills = useSelector((state)=>state.skills)
+  const [skillarray, setSkillarray] = useState(skills);
+  function handlechange(id,e) {
+    skillarray[id] = e.target.value;
+    console.log(skillarray,id,e.target.value)
+    setSkillarray([...skillarray])
   }
   
-
   useEffect(() => {
-    send({ type: "SKILLS", payload: skill });
-  }, [skill]);
+    send({ type: "SKILLS", payload: skillarray });
+  }, [skillarray]);
 
+  function onDelete(e) {
+    setSkillarray([
+      ...skillarray.slice(0,-1)
+    ])
+  }
   function createskill() {
-    setSkillarray([...skillarray,skillarray.length])
+    setSkillarray([...skillarray,""])
   }
 
   return (
@@ -32,7 +57,8 @@ function Skillsform() {
           <p>Add a few skills to show employers what you're good at.</p>
         </div>
         <form className={Styles.form}>
-          {skillarray.map((index) => {
+          
+          {skillarray.map((ele,index) => {
             return (
               <div key={index} className={Styles.skills}>
                 <div className={Styles.updown}>
@@ -41,11 +67,11 @@ function Skillsform() {
                 <div className={Styles.input}>
                   <input
                     type="text"
-                    name={"skill" + index}
-                    onChange={handlechange}
+                    onChange={(e)=>handlechange(index,e)}
+                    value={ele}
                     placeholder={"Skills #" + index}
                   />
-                  <i class="fa-solid fa-trash"></i>
+                  <i name={index} onClick={onDelete} class="fa-solid fa-trash"></i>
                 </div>
               </div>
             );
@@ -57,7 +83,7 @@ function Skillsform() {
             </a>
           </div>
           <Link to="/summary">
-            <button className={Styles.btnSite}>SAVE & CONTINUE</button>
+            <button onClick={sendskills} className={Styles.btnSite}>SAVE & CONTINUE</button>
           </Link>
         </form>
         <div className={Styles.back}>

@@ -5,8 +5,28 @@ import Resume1 from './Resume1';
 import {useDispatch} from "react-redux";
 import {useState} from "react";
 import { useSelector } from 'react-redux';
+import {doc,updateDoc} from "firebase/firestore";
+import { db } from '..';
 
 function Summary() {
+
+  const prevstate =useSelector((state) => state.expsummary);
+  const uid = useSelector((state)=>state.userdetails.uid);
+  
+  async function sendexpsum() {
+    if(uid){
+      try {
+        const docRef=doc(db,"user",uid);
+        await updateDoc(docRef, {
+          expsummary:prevstate
+        });
+        console.log("data saved");
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
+    }
+  }
+
   const {jobtitle,company}=useSelector((state) => state.exp)
   const send =useDispatch();
   const[expsummary, setExpsummary] = useState({});
@@ -38,7 +58,7 @@ function Summary() {
           <i class="fa-solid fa-spell-check"></i>
           <i class="fa-solid fa-list-check"></i>
                </div>
-        <Link to="/educationform"><button className={Styles.btnSite}>SAVE & CONTINUE</button></Link>
+        <Link to="/educationform"><button onClick={sendexpsum} className={Styles.btnSite}>SAVE & CONTINUE</button></Link>
       </form>
       <div className={Styles.back}>
         <Link to="/experienceform">Back</Link>

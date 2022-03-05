@@ -1,10 +1,30 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Styles from "../Styles/experienceform.module.css";
 import Resume1 from "./Resume1";
+import {addDoc,collection,doc,updateDoc,setDoc} from "firebase/firestore";
+import{db} from "../index";
 
 function Experienceform() {
+  const prevstate =useSelector((state) => state.exp);
+  const uid = useSelector((state)=>state.userdetails.uid);
+  
+  async function sendexp() {
+    if(uid){
+      try {
+        const docRef=doc(db,"user",uid);
+        await updateDoc(docRef, {
+          experience:prevstate
+        });
+        console.log("data saved");
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
+    }
+  }
+
+
   const send =useDispatch();
   const[exp,setExp] = useState({});
   function handlechange(e) {
@@ -130,7 +150,7 @@ function Experienceform() {
             <label>Currently Work Here</label>
           </div>
           <Link to="/expsummary">
-            <button className={Styles.btnSite}>ENTER JOB DESCRIPTION</button>
+            <button onClick={sendexp} className={Styles.btnSite}>SAVE & CONTINUE</button>
           </Link>
         </form>
         <div className={Styles.back}>

@@ -2,10 +2,29 @@ import React, { useEffect } from 'react';
 import Styles from "../Styles/summary.module.css";
 import {Link} from "react-router-dom";
 import Resume1 from './Resume1';
-import {useDispatch} from "react-redux";
+import {useDispatch,useSelector} from "react-redux";
 import {useState} from "react";
+import {updateDoc,doc} from "firebase/firestore";
+import { db } from "..";
 
 function Summary() {
+
+  const prevstate =useSelector((state) => state.summary);
+  const uid = useSelector((state)=>state.userdetails.uid);
+  
+  async function sendsummary() {
+    if(uid){
+      try {
+        const docRef=doc(db,"user",uid);
+        await updateDoc(docRef, {
+          summary:prevstate
+        });
+        console.log("data saved");
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
+    }
+  }
 
   const send =useDispatch();
   const[summary, setSummary] = useState({});
@@ -37,7 +56,7 @@ function Summary() {
           <i class="fa-solid fa-spell-check"></i>
           <i class="fa-solid fa-list-check"></i>
                </div>
-        <Link to="/finalize"><button className={Styles.btnSite}>SAVE & CONTINUE</button></Link>
+        <Link to="/finalize"><button onClick={sendsummary} className={Styles.btnSite}>SAVE & CONTINUE</button></Link>
       </form>
       <div className={Styles.back}>
         <Link to="/skillsform">Back</Link>

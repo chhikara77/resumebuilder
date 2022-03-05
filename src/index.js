@@ -3,19 +3,23 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import Contactpagereducer from './reducers/Contactpagereducer';
-// Import the functions you need from the SDKs you need
-// import { initializeApp } from "firebase/app";
-// const firebaseConfig = {
-//   apiKey: "AIzaSyCzYWh2fzKY6MwfWI9_yMQzyBUpLFWBCA0",
-//   authDomain: "resume-builder-8c0b0.firebaseapp.com",
-//   projectId: "resume-builder-8c0b0",
-//   storageBucket: "resume-builder-8c0b0.appspot.com",
-//   messagingSenderId: "1023864966191",
-//   appId: "1:1023864966191:web:d1b63e6799dc926ae1cada",
-//   measurementId: "G-86P42SYPEW"
-// };
+import { initializeApp } from "firebase/app";
+import { getFirestore } from 'firebase/firestore';
+import thunk from 'redux-thunk';
+export const firebaseConfig = {
+  apiKey: "AIzaSyAGKD97vwd0W0NirxIdB0PCB4IYdjIJWfI",
+  authDomain: "justfortest-b6aae.firebaseapp.com",
+  projectId: "justfortest-b6aae",
+  storageBucket: "justfortest-b6aae.appspot.com",
+  messagingSenderId: "1061088728648",
+  appId: "1:1061088728648:web:4618ecf88249f72599aa7d",
+  measurementId: "G-WDM6NLE5C0",
+};
+const app = initializeApp(firebaseConfig);
+export const db= getFirestore(app);
+
 const store = createStore(
   Contactpagereducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()

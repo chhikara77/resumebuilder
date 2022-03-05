@@ -1,0 +1,89 @@
+.formcard {
+    width: 330px;
+    height: 380px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    margin: 50px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+.formcard h1 {
+    color: #03acbb;
+}
+.loginicon {
+    display: flex;
+}
+.loginicon i{
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid silver;
+    margin: 4px;
+    color: rgb(88, 88, 88);
+}
+.formcard p {
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+.formbox {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+.inputbox {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.input1,.input2 {
+    position: relative;
+}
+.input1 i {
+    position: absolute;
+    top: 14px;
+    left: 5px;
+    color: rgb(163, 163, 163);
+}
+.input2 i {
+    position: absolute;
+    top: 13px;
+    left: 5px;
+    color: rgb(163, 163, 163);
+}
+.inputbox input {
+    height: 35px;
+    text-indent: 20px;
+    width: 100%;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: 1px solid silver;
+    padding: 5px;
+    box-sizing: border-box;
+    background-color: silver;
+}
+   
+.formbox a {
+    text-align: center;
+    color: #03acbb;
+    font-size: 12px;
+    margin: 3px 0 10px;
+}
+.formbox button{
+    height: 40px;
+    width: 100%;
+    color: white;
+    font-weight: 700;
+    margin: auto;
+    border-radius: 5px;
+    border: none;
+    margin: 0 auto;
+    background-color: #8cc53e;
+}
+.formbox button:hover {
+    background-color: #94dd46;
+}

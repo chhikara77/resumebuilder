@@ -1,13 +1,39 @@
 import Styles from "../Styles/resume1.module.css";
 import { useSelector } from "react-redux";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import {doc,getDoc} from "firebase/firestore";
+import { db } from "..";
+
 
 function Resume1({ fontSize }) {
   const fontSizeValue = fontSize ? fontSize : "16px";
-
-  const store = useSelector((state) => state);
-  console.log("from resume1",fontSizeValue);
-  const { contact, edu, exp, expsummary, summary, skills, document } = store;
+  var storelocal = useSelector((state) => state);
+  const [store,setStore] =useState(storelocal);
+  // const  docsnap =  getDoc(doc(db,"user","DifUIktYAEXrwUGkLc7A20jHQ7y1")).then((docsnap) => {
+  //   if (docsnap.exists) {
+  //       console.log("Document data:", docsnap.data());
+  //       setStore({
+  //         ...store,
+  //         ...docsnap.data()
+  //       }
+  //       )
+  //   } else {
+  //       // doc.data() will be undefined in this case
+  //       console.log("No such document!");
+  //   }
+  // })
+  useEffect(()=>{
+    const  docsnap =  getDoc(doc(db,"user","DifUIktYAEXrwUGkLc7A20jHQ7y1")).then((docsnap) => {
+      if (docsnap.exists) {
+          //console.log("Document data:", docsnap.data());
+      } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
+      }
+    })
+  },[])
+  //console.log("from resume1",fontSizeValue);
+  const { contact, edu, exp, expsummary, summary, skills, document } = storelocal;
   const resumeColor = "resumeBgColor" + document.color;
 
   function experienceString(exp) {
@@ -25,7 +51,7 @@ function Resume1({ fontSize }) {
     return result;
   }
 
-  console.log(exp.company);
+
   return (
     <div
       className={`${Styles.resumecontainer} ${Styles[document.fontSize]} ${
@@ -59,7 +85,7 @@ function Resume1({ fontSize }) {
             </div>
             <div className={Styles.properties}>
               <ul>
-                {skills.map((list) => (
+                {skills.filter(ele=>ele !== "").map((list) => (
                   <li key={list}>{list}</li>
                 ))}
               </ul>

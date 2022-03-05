@@ -1,10 +1,31 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
+import {doc,updateDoc} from "firebase/firestore";
+import Edufill from '../actions/Edufill';
 import { Link } from 'react-router-dom';
 import Styles from "../Styles/educationform.module.css"
 import Resume1 from './Resume1';
+import { db } from '..';
 
 function Educationform() {
+
+  const prevstate =useSelector((state) => state.edu);
+  const uid = useSelector((state)=>state.userdetails.uid);
+  
+  async function sendedu() {
+    if(uid){
+      try {
+        const docRef=doc(db,"user",uid);
+        await updateDoc(docRef, {
+          edu:prevstate
+        });
+        console.log("data saved");
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
+    }
+  }
+
   const send=useDispatch();
   const [edu, setEdu] = useState({});
   function handlechange(e) {
@@ -15,7 +36,7 @@ function Educationform() {
     })
   }
   useEffect(() => {
-    send({type:"EDUCATION",payload:edu})
+    send(Edufill(edu))
   },[edu])
   return (
     <div className={Styles.container}>
@@ -84,7 +105,7 @@ function Educationform() {
         <div className={Styles.desc}>
            <a href="#">+ Add description or special awards</a> 
         </div>
-        <Link to="/skillsform"><button className={Styles.btnSite}>ENTER JOB DESCRIPTION</button></Link>
+        <Link to="/skillsform"><button onClick={sendedu} className={Styles.btnSite}>ENTER JOB DESCRIPTION</button></Link>
       </form>
       <div className={Styles.back}>
         <Link to="/experienceform">Back</Link>
