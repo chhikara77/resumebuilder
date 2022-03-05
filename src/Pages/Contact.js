@@ -1,25 +1,31 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Styles from "../Styles/contact.module.css";
 import { Link } from "react-router-dom";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Contactfill from "../actions/Contactfill";
 import Resume1 from "./Resume1";
+import { useSelector } from "react-redux";
+
+
 function Contact() {
+
+//const prevstate =useSelector((state) => state.conatct);
+  const [contact, setContact] = useState({});
+  
   const send = useDispatch();
-  let obj = {
-  };
-  const [contact, setContact] = useState(obj);
   function handlechange(e) {
-    
-    let { name, value } = e.target;
+    const { name, value } = e.target;
     setContact({
       ...contact,
       [name]:value
     });
-    send(Contactfill(contact))
+    
   }
-  
+ 
+  useEffect(() =>{
+    send(Contactfill(contact));
 
+  },[contact])
 
   return (
     <div className={Styles.container}>
@@ -30,7 +36,7 @@ function Contact() {
         </div>
         <form action="">
           <label>Name</label>
-          <input name="name" onChange={handlechange} type="text" />
+          <input value={contact.name} name="name" onChange={handlechange} type="text" autoFocus/>
           <label>Email</label>
           <div className={Styles.emailcontainer}>
             <div className={Styles.emailbox}>
@@ -69,7 +75,7 @@ function Contact() {
         </div>
       </div>
       <div className={Styles.liveresume}>
-      <Resume1 />
+      <Resume1 fontSize="10px"/>
       </div>
     </div>
   );

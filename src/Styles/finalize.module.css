@@ -6,7 +6,7 @@
 }
 .left{
     width: 75%;
-    height: 100%;
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,25 +25,37 @@
 }
 .firstbox{
     display: flex;
+
     flex-direction: column;
     align-items: center;
 }
 .firstbox h1,p {
-    margin: 12px 0 0;
+    margin: 10px 0 0;
 }
-.firstbox, .secondbox{
+.formatoption>div>p {
+    padding-bottom: 5px;
+}
+.firstbox{
 border-bottom: 1px solid #e4dbdb;
-height: 33%;
+height: 35%;
 width: 100%;
 
 }
+.secondbox{
+    border-bottom: 1px solid #e4dbdb;
+    height: 33%;
+    width: 100%;
+    padding: 25px;
+    box-sizing: border-box;
+    
+    }
 .firstbox .formatoption {
     width: 100%;
     padding: 0 15px;
     box-sizing: border-box;
 }
 .buttonbox {
-  margin-top:3px;
+  margin:8px 0;
   display: flex;
   justify-content: space-around;
 }
@@ -61,6 +73,9 @@ width: 100%;
 .fontstyle>div {
     width: 100%;
 }
+.fontstyle div>p {
+    margin-bottom: 5px;
+}
 .fontstyle select {
     background-color: rgb(255, 255, 255);
     width: 90%;
@@ -68,15 +83,8 @@ width: 100%;
     height: 30px;
     border-radius: 5px;
 }
-.resumebox{
-    margin: 20px 0;
-    width: 70%;
-    height: 900px;
-    background-color: white;
-    padding: 10px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-    border-radius: 3px;
-    display: flex;
+.colors>div>p {
+    margin-bottom: 10px;
 }
 .colorbox {
     display: flex;
@@ -84,13 +92,14 @@ width: 100%;
     margin: 5px 0;
 }
 
-.colorbox div {
-    /* box-shadow: 3px 25px 0 5px #C95439; */
+.colorbox input {
+    box-shadow: 0 10px 30px rgb(167, 193, 216 );
     width: 36px;
     height: 36px;
     color: white;
     background-color: aliceblue;
     border-radius: 50%;
+    border: none;
 }
 .colorbox .color1 {
     background-color: rgb(167, 193, 216);
@@ -121,17 +130,10 @@ width: 100%;
     box-shadow: 0 10px 30px rgb(167, 193, 216 );
 }
 .colorbox .color8 {
-    background-color: rgb(233, 139, 76);
+    background-color: rgb(76, 139, 233);
     box-shadow: 0 10px 30px rgb(167, 193, 216 );
 }
-.colorbox .color9 {
-    background-color: rgb(132, 189, 238);
-    box-shadow: 0 10px 30px rgb(180, 179, 179);
-}
-.secondbox {
-    padding: 25px;
-    box-sizing: border-box;
-}
+
 .outputbutton  div{
     height: 43px;
     font-weight: 700;
@@ -152,4 +154,14 @@ width: 100%;
 .thirdbox {
     padding: 25px;
     box-sizing: border-box;
+}
+.resumebox{
+    margin: 20px 0;
+    width: 65%;
+    
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+    display: flex;
 }
