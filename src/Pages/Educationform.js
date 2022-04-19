@@ -9,9 +9,10 @@ import { db } from '..';
 
 function Educationform() {
 
+  const send=useDispatch();
   const prevstate =useSelector((state) => state.edu);
   const uid = useSelector((state)=>state.userdetails.uid);
-  
+  const {school,city,country,degree,gradmonth,gradyear} = prevstate;
   async function sendedu() {
     if(uid){
       try {
@@ -26,7 +27,6 @@ function Educationform() {
     }
   }
 
-  const send=useDispatch();
   const [edu, setEdu] = useState({});
   function handlechange(e) {
     const {name,value} =e.target;
@@ -47,23 +47,23 @@ function Educationform() {
       </div>
       <form action="" className={Styles.form}>
         <label>School Name</label>
-        <input name="school" onChange={handlechange} type="text" />
+        <input name="school" value={school} onChange={handlechange} type="text" />
         <div className={Styles.address}>
             <div>
                 <label>City/Town</label>
-                <input name="city" onChange={handlechange} type="text" />
+                <input name="city" value={city} onChange={handlechange} type="text" />
             </div>
             <div>
                 <label>Country</label>
-                <input name="country" onChange={handlechange} type="text" />
+                <input name="country" value={country} onChange={handlechange} type="text" />
             </div>
         </div>
         <label>Degree</label>
-        <input name="degree" onChange={handlechange} type="text" />
+        <input name="degree" value={degree} onChange={handlechange} type="text" />
         <label>Graduation Date</label>
         <div className={Styles.graddate}>
             <div>
-                <select onChange={handlechange} name="gradmonth"  >
+                <select onChange={handlechange} value={gradmonth} name="gradmonth"  >
                  <option value="0">Month</option>
                   <option onChange={handlechange}  value="1">January</option>
                   <option onChange={handlechange}  value="2">February</option>
@@ -80,7 +80,7 @@ function Educationform() {
                 </select>
             </div>
             <div>
-              <select onChange={handlechange} name="gradyear" >
+              <select onChange={handlechange} value={gradyear} name="gradyear" >
                 <option value="0">Year</option>
                 <option onChange={handlechange}>2025</option>
                 <option onChange={handlechange}>2024</option>
@@ -108,7 +108,7 @@ function Educationform() {
         <Link to="/skillsform"><button onClick={sendedu} className={Styles.btnSite}>ENTER JOB DESCRIPTION</button></Link>
       </form>
       <div className={Styles.back}>
-        <Link to="/experienceform">Back</Link>
+        <Link to="/expsummary">Back</Link>
       </div>
     </div>
     <div className={Styles.liveresume}>

@@ -3,11 +3,13 @@ import { useDispatch,useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Styles from "../Styles/experienceform.module.css";
 import Resume1 from "./Resume1";
-import {addDoc,collection,doc,updateDoc,setDoc} from "firebase/firestore";
+import {doc,updateDoc} from "firebase/firestore";
 import{db} from "../index";
 
 function Experienceform() {
+  const send =useDispatch();
   const prevstate =useSelector((state) => state.exp);
+  const {jobtitle,company,city,country,startmonth,endmonth,startyear,endyear}=prevstate;
   const uid = useSelector((state)=>state.userdetails.uid);
   
   async function sendexp() {
@@ -25,7 +27,6 @@ function Experienceform() {
   }
 
 
-  const send =useDispatch();
   const[exp,setExp] = useState({});
   function handlechange(e) {
     const {name, value} =e.target;
@@ -36,7 +37,8 @@ function Experienceform() {
   }
   useEffect(() => {
     send({type:"EXPERIENCE",payload:exp})
-  },[exp])
+  },[exp]);
+
   return (
     <div className={Styles.container}>
       <div className={Styles.formsection}>
@@ -46,23 +48,23 @@ function Experienceform() {
         </div>
         <form action="" className={Styles.form}>
           <label>Job Title</label>
-          <input onChange={handlechange} name="jobtitle" type="text" autoFocus/>
+          <input onChange={handlechange} value={jobtitle} name="jobtitle" type="text" autoFocus/>
           <label>Company</label>
-          <input onChange={handlechange} name="company" type="text" />
+          <input onChange={handlechange} value={company} name="company" type="text" />
           <div className={Styles.address}>
             <div>
               <label>City/Town</label>
-              <input onChange={handlechange}  name="city" type="text" />
+              <input onChange={handlechange} value={city} name="city" type="text" />
             </div>
             <div>
               <label>Country</label>
-              <input onChange={handlechange} name="country" type="text" />
+              <input onChange={handlechange} value={country} name="country" type="text" />
             </div>
           </div>
           <label>Start Date</label>
           <div className={Styles.startdate}>
           <div>
-                <select onChange={handlechange} name="startmonth"  >
+                <select onChange={handlechange} name="startmonth" value={startmonth}  >
                  <option value="0">Month</option>
                   <option onChange={handlechange}  value="1">January</option>
                   <option onChange={handlechange}  value="2">February</option>
@@ -79,7 +81,7 @@ function Experienceform() {
                 </select>
             </div>
             <div>
-              <select onChange={handlechange} name="startyear" >
+              <select onChange={handlechange} value={startyear} name="startyear" >
                 <option value="0">Year</option>
                 <option onChange={handlechange}>2025</option>
                 <option onChange={handlechange}>2024</option>
@@ -105,7 +107,7 @@ function Experienceform() {
           <label>End Date</label>
           <div className={Styles.enddate}>
           <div>
-                <select onChange={handlechange} name="endmonth"  >
+                <select onChange={handlechange} value={endmonth} name="endmonth"  >
                  <option value="0">Month</option>
                   <option onChange={handlechange}  value="1">January</option>
                   <option onChange={handlechange}  value="2">February</option>
@@ -122,7 +124,7 @@ function Experienceform() {
                 </select>
             </div>
             <div>
-              <select onChange={handlechange} name="endyear" >
+              <select onChange={handlechange} value={endyear} name="endyear" >
                 <option value="0">Year</option>
                 <option onChange={handlechange}>2025</option>
                 <option onChange={handlechange}>2024</option>

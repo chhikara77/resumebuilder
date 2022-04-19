@@ -8,7 +8,7 @@ import { db } from "..";
 function Resume1({ fontSize }) {
   const fontSizeValue = fontSize ? fontSize : "16px";
   var storelocal = useSelector((state) => state);
-  const [store,setStore] =useState(storelocal);
+  //const [store,setStore] =useState(storelocal);
   // const  docsnap =  getDoc(doc(db,"user","DifUIktYAEXrwUGkLc7A20jHQ7y1")).then((docsnap) => {
   //   if (docsnap.exists) {
   //       console.log("Document data:", docsnap.data());
@@ -23,16 +23,15 @@ function Resume1({ fontSize }) {
   //   }
   // })
   useEffect(()=>{
-    const  docsnap =  getDoc(doc(db,"user","DifUIktYAEXrwUGkLc7A20jHQ7y1")).then((docsnap) => {
-      if (docsnap.exists) {
-          //console.log("Document data:", docsnap.data());
-      } else {
-          // doc.data() will be undefined in this case
-          console.log("No such document!");
-      }
-    })
+    // const  docsnap =  getDoc(doc(db,"user","DifUIktYAEXrwUGkLc7A20jHQ7y1")).then((docs) => {
+    //   if (docs.exists) {
+    //       console.log("Document data:", docsnap.data());
+    //   } else {
+    //       // doc.data() will be undefined in this case
+    //       console.log("No such document!");
+    //   }
+    // })
   },[])
-  //console.log("from resume1",fontSizeValue);
   const { contact, edu, exp, expsummary, summary, skills, document } = storelocal;
   const resumeColor = "resumeBgColor" + document.color;
 
@@ -50,7 +49,6 @@ function Resume1({ fontSize }) {
     }
     return result;
   }
-
 
   return (
     <div

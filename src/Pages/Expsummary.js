@@ -1,17 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import Styles from "../Styles/expsummary.module.css";
 import {Link} from "react-router-dom";
 import Resume1 from './Resume1';
-import {useDispatch} from "react-redux";
-import {useState} from "react";
-import { useSelector } from 'react-redux';
+import {useDispatch,useSelector} from "react-redux";
 import {doc,updateDoc} from "firebase/firestore";
 import { db } from '..';
 
 function Summary() {
-
   const prevstate =useSelector((state) => state.expsummary);
+  const {jobtitle,company}=useSelector((state) => state.exp);
   const uid = useSelector((state)=>state.userdetails.uid);
+  const send =useDispatch();
   
   async function sendexpsum() {
     if(uid){
@@ -26,9 +25,7 @@ function Summary() {
       }
     }
   }
-
-  const {jobtitle,company}=useSelector((state) => state.exp)
-  const send =useDispatch();
+  
   const[expsummary, setExpsummary] = useState({});
   function handlechange(e) {
           let {name,value} =e.target;
@@ -39,7 +36,8 @@ function Summary() {
         }
      useEffect(() => {
          send({type:"EXPSUMMARY",payload:expsummary});
-  },[expsummary])
+  },[expsummary]);
+
   return (
     <div className={Styles.container}>
     <div className={Styles.formsection}>
@@ -48,7 +46,7 @@ function Summary() {
         <p>{jobtitle} {company}</p>
       </div>
       <form action="" className={Styles.form}>
-          <textarea name="expsummary" onChange={handlechange} placeholder='Sell yourself for the job. Include 3-5 sentences. Customize your summary to the job you’re applying to.' id="" cols="30" rows="20"></textarea>
+          <textarea name="expsummary" value={prevstate.expsummary} onChange={handlechange} placeholder='Sell yourself for the job. Include 3-5 sentences. Customize your summary to the job you’re applying to.' id="" cols="30" rows="20"></textarea>
           <div className={Styles.editorbtn}>
           <i class="fa-solid fa-bold"></i>
           <i class="fa-solid fa-italic"></i>

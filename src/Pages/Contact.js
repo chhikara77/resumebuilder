@@ -1,17 +1,19 @@
 import React, { useState,useEffect } from "react";
 import Styles from "../Styles/contact.module.css";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import Contactfill from "../actions/Contactfill";
 import Resume1 from "./Resume1";
-import { useSelector } from "react-redux";
 import {db} from "../index"
-import { collection,doc, addDoc,setDoc } from "firebase/firestore"; 
+import { doc,setDoc } from "firebase/firestore"; 
 
 function Contact() {
 
+const send = useDispatch();
 const prevstate =useSelector((state) => state.contact);
-const uid = useSelector((state)=>state.userdetails.uid);
+const {name,email,street,city,country,phone} =prevstate;
+const uid = useSelector((state)=>state.userdetails.uid);  
+console.log("from",name)
 async function sendcontact() {
   if(uid){
     try {
@@ -26,8 +28,7 @@ async function sendcontact() {
   }
 }
 
-  const [contact, setContact] = useState({});
-  const send = useDispatch();
+  const [contact, setContact] = useState(prevstate);
   function handlechange(e) {
     const { name, value } = e.target;
     setContact({
@@ -38,7 +39,6 @@ async function sendcontact() {
  
   useEffect(() =>{
     send(Contactfill(contact));
-    console.log("contact page",uid);
   },[contact])
 
   return (
@@ -50,11 +50,11 @@ async function sendcontact() {
         </div>
         <form action="">
           <label>Name</label>
-          <input value={contact.name} name="name" onChange={handlechange} type="text" autoFocus/>
+          <input value={contact.name} name="name" value={name} onChange={handlechange} type="text" autoFocus/>
           <label>Email</label>
           <div className={Styles.emailcontainer}>
             <div className={Styles.emailbox}>
-              <input name="email" onChange={handlechange} type="email" />
+              <input name="email" value={email} onChange={handlechange} type="email" />
             </div>
             <div className={Styles.emailcheck}>
               <input type="checkbox" />
@@ -63,19 +63,21 @@ async function sendcontact() {
           </div>
 
           <label>Street Address</label>
-          <input name="street" onChange={handlechange} type="text" />
+          <input name="street" value={street} onChange={handlechange} type="text" />
           <label>City</label>
           <input
             name="city"
+            value={city}
             onChange={handlechange}
             type="text"
             className={Styles.city}
           />
           <label>Country</label>
-          <input name="country" onChange={handlechange} type="text" />
+          <input name="country" value={country} onChange={handlechange} type="text" />
           <label>Phone Number</label>
           <input
             name="phone"
+            value={phone}
             onChange={handlechange}
             type="text"
             className={Styles.phone}

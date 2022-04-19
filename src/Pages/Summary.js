@@ -1,16 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import Styles from "../Styles/summary.module.css";
 import {Link} from "react-router-dom";
 import Resume1 from './Resume1';
 import {useDispatch,useSelector} from "react-redux";
-import {useState} from "react";
 import {updateDoc,doc} from "firebase/firestore";
 import { db } from "..";
 
 function Summary() {
-
   const prevstate =useSelector((state) => state.summary);
   const uid = useSelector((state)=>state.userdetails.uid);
+  const send =useDispatch();
   
   async function sendsummary() {
     if(uid){
@@ -26,7 +25,6 @@ function Summary() {
     }
   }
 
-  const send =useDispatch();
   const[summary, setSummary] = useState({});
   function handlechange(e) {
           let {name,value} =e.target;
@@ -46,7 +44,7 @@ function Summary() {
         <p>Briefly describe the value that you bring through your skills, background and experience.</p>
       </div>
       <form action="" className={Styles.form}>
-          <textarea name="summary" onChange={handlechange} placeholder='Sell yourself for the job. Include 3-5 sentences. Customize your summary to the job you’re applying to.' id="" cols="30" rows="20"></textarea>
+          <textarea value={prevstate.summary} name="summary" onChange={handlechange} placeholder='Sell yourself for the job. Include 3-5 sentences. Customize your summary to the job you’re applying to.' id="" cols="30" rows="20"></textarea>
           <div className={Styles.editorbtn}>
           <i class="fa-solid fa-bold"></i>
           <i class="fa-solid fa-italic"></i>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Styles from "../Styles/finalize.module.css";
 import Resume from "./Resume";
+import {Link} from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { jsPDF } from 'jspdf';
 import { useSelector } from "react-redux";
@@ -170,7 +171,7 @@ function Finalize() {
           <div className={Styles.outputbutton}>
             <div>+Add New Section </div>
             <div>Change Template</div>
-            <div>Back</div>
+            <Link to="/summary"><div>Back</div></Link>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+ import React, { useEffect, useState } from "react";
 import Styles from "../Styles/skillsform.module.css";
 import { Link } from "react-router-dom";
 import Resume1 from "./Resume1";
@@ -8,10 +8,10 @@ import {updateDoc,doc} from "firebase/firestore";
 import { db } from "..";
 
 function Skillsform() {
-
   const prevstate =useSelector((state) => state.skills);
   const uid = useSelector((state)=>state.userdetails.uid);
-  
+  const send = useDispatch();
+
   async function sendskills() {
     if(uid){
       try {
@@ -26,13 +26,9 @@ function Skillsform() {
     }
   }
 
-
-  const send = useDispatch();
-  const skills = useSelector((state)=>state.skills)
-  const [skillarray, setSkillarray] = useState(skills);
+  const [skillarray, setSkillarray] = useState(prevstate);
   function handlechange(id,e) {
     skillarray[id] = e.target.value;
-    console.log(skillarray,id,e.target.value)
     setSkillarray([...skillarray])
   }
   
@@ -71,7 +67,7 @@ function Skillsform() {
                     value={ele}
                     placeholder={"Skills #" + index}
                   />
-                  <i name={index} onClick={onDelete} class="fa-solid fa-trash"></i>
+                  <i  onClick={onDelete} class="fa-solid fa-trash"></i>
                 </div>
               </div>
             );
